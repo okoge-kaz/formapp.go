@@ -25,6 +25,6 @@ func nameFormHandler(ctx *gin.Context) {
 }
 
 func registerNameHandler(ctx *gin.Context) {
-	body, _ := ctx.GetRawData()
-	ctx.String(http.StatusOK, string(body))
+	name, _ := ctx.GetPostForm("name")
+	ctx.HTML(http.StatusOK, "result.html", gin.H{"Name": name})
 }
