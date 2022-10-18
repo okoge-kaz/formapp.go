@@ -14,3 +14,19 @@ $ docker-compose exec app go run main.go
 Or, you can directly execute `go run main.go` if you have Go development tools.
 
 The execution command downloads Gin framework from the Internet, thus your PC is required to be online and the server may require a couple of minutes until start working.
+
+## Git
+
+Visual Studio Code上で git push をしようとすると fork 元の upstreamがデフォルトになっているようでpermission denied になる。そのため、pushを行う際は、forkしたリポジトリを明示的に指定する必要がある。
+
+```sh
+git push origin <branch name>
+```
+
+## Go module Installation
+
+go module を下記のコマンドでインストールすることができる。
+
+  ```sh
+  go mod tidy
+  ```
