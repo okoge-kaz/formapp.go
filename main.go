@@ -1,36 +1,30 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-// config
-const port = 8000
-
 func main() {
-	// initialize Gin engine
 	engine := gin.Default()
-
-	// routing
+	engine.LoadHTMLGlob("templates/*.html")
 	engine.GET("/", rootHandler)
-	engine.GET("/bye", func(ctx *gin.Context) {
-		ctx.String(http.StatusOK, "Good Bye!")
-	})
-	engine.GET("/hello.jp", func(ctx *gin.Context) {
-		ctx.String(http.StatusOK, "こんにちは")
-	})
-	engine.GET("/hello/:name", func(ctx *gin.Context) {
-		name := ctx.Param("name")
-		ctx.String(http.StatusOK, "Hello %s!", name)
-	})
+	engine.GET("/name-form", nameFormHandler)
+	engine.POST("/register-name", registerNameHandler)
 
-	// start server
-	engine.Run(fmt.Sprintf(":%d", port))
+	engine.Run(":8000")
 }
 
 func rootHandler(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "Hello world.")
+	ctx.HTML(http.StatusOK, "hello.html", nil)
+}
+
+func nameFormHandler(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "name_form.html", nil)
+}
+
+func registerNameHandler(ctx *gin.Context) {
+	body, _ := ctx.GetRawData()
+	ctx.String(http.StatusOK, string(body))
 }
