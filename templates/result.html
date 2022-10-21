@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Result | formapp.go</title>
+    <title>Result</title>
   </head>
   <body>
-    <h1>入力結果</h1>
-    <dl>
-      <dt>名前</dt>
-      <dd>{{ .Name }}</dd>
-    </dl>
+    <h1>確認画面</h1>
+    <div>
+      <li>
+        <label>名前: </label>
+        <span>{{ .Name }}</span>
+      </li>
+      <li>
+        <label>生年月日: </label>
+        <span>{{ .Birthday }}</span>
+      </li>
+      <li>
+        <label>メッセージ: </label>
+        <span>{{ .Message }}</span>
+      </li>
+      <form action="/stateless/start" method="get">
+        <input type="submit" value="submit" />
+      </form>
+    </div>
   </body>
 </html>

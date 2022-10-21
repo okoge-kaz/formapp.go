@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Message Input</title>
+  </head>
+  <body>
+    <div>メッセージ:</div>
+    <form action="{{ .Target }}" method="POST">
+      <input type="text" name="message" />
+      <input type="hidden" name="name" value="{{ .Name }}" />
+      <input type="hidden" name="birthday" value="{{ .Birthday }}" />
+      <br />
+      <input type="submit" value="next" />
+    </form>
+  </body>
+</html>

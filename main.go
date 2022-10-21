@@ -16,7 +16,7 @@ func main() {
 	engine.POST("/stateless/name", stateless.BirthdayForm)
 	engine.POST("/stateless/birthday", stateless.MessageForm)
 	engine.POST("/stateless/message", stateless.Conformation)
-	engine.POST("/stateless/confirm", stateless.End)
+	engine.POST("/stateless/result", stateless.End)
 	// root/*
 	engine.GET("/name-form", service.NameFormHandler)
 	engine.POST("/register-name", service.RegisterNameHandler)

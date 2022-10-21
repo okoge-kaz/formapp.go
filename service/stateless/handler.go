@@ -21,7 +21,7 @@ func BirthdayForm(ctx *gin.Context) {
 	if !exist {
 		ctx.String(http.StatusBadRequest, "parameter 'name' is not provided")
 	}
-	ctx.HTML(http.StatusOK, " stateless-birthday-form.html", gin.H{"Name": name, "Target": "/stateless/birthday"})
+	ctx.HTML(http.StatusOK, "stateless-birthday-form.html", gin.H{"Name": name, "Target": "/stateless/birthday"})
 }
 
 func MessageForm(ctx *gin.Context) {
@@ -44,7 +44,7 @@ func Conformation(ctx *gin.Context) {
 		"Name":     name,
 		"Birthday": birthday,
 		"Message":  message,
-		"Target":   "/stateless/confirm",
+		"Target":   "/stateless/result",
 	})
 }
 
