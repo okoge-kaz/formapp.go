@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>birthday</title>
+  </head>
+  <body>
+    <div>
+      <form action="/stateless/birthday" method="POST">
+        <label>生年月日: </label>
+        <input type="date" name="birthday" value="2011-10-22" />
+        <input type="hidden" name="name" value="{{ .Name }}" />
+        <br /><input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>

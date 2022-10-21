@@ -1,30 +1,25 @@
 package main
 
 import (
-	"net/http"
-
+	"formapp.go/service"
+	"formapp.go/service/stateless"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	engine := gin.Default()
 	engine.LoadHTMLGlob("templates/*.html")
-	engine.GET("/", rootHandler)
-	engine.GET("/name-form", nameFormHandler)
-	engine.POST("/register-name", registerNameHandler)
+
+	// root/stateless/*
+	engine.GET("/stateless/start", stateless.Start)
+	engine.POST("/stateless/start", stateless.NameForm)
+	engine.POST("/stateless/name", stateless.BirthdayForm)
+	engine.POST("/stateless/birthday", stateless.MessageForm)
+	engine.POST("/stateless/message", stateless.Conformation)
+	engine.POST("/stateless/result", stateless.End)
+	// root/*
+	engine.GET("/name-form", service.NameFormHandler)
+	engine.POST("/register-name", service.RegisterNameHandler)
 
 	engine.Run(":8000")
-}
-
-func rootHandler(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "hello.html", nil)
-}
-
-func nameFormHandler(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "name_form.html", nil)
-}
-
-func registerNameHandler(ctx *gin.Context) {
-	name, _ := ctx.GetPostForm("name")
-	ctx.HTML(http.StatusOK, "result.html", gin.H{"Name": name})
 }
